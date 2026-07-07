@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends, Request
 from sqlalchemy.orm import Session
 
-from app.database import get_db
+from app.dependencies import get_db
 from app.schema import Contact
 from app.models import ContactCreate
 
