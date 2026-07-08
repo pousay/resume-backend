@@ -10,7 +10,7 @@ class NotificationService:
     def __init__(self, telegram: TelegramService):
         self.telegram = telegram
 
-    async def notify_new_contact(self, contact: Contact) -> None:
+    async def notify_new_contact(self, contact: Contact, i: int = 1) -> None:
         created_at = contact.created_at
 
         if created_at.tzinfo is None:
@@ -35,7 +35,15 @@ class NotificationService:
 <code>{created_at.strftime("%Y-%m-%d %H:%M:%S")}</code>
 """.strip()
 
-        await self.telegram.send_message(message)
+        try:
+            await self.telegram.send_message(message)
+        except Exception as e:
+            print(f"[{i}] Failed to send notification: {e}")
+            if i > 5:
+                print(f"Maximum Retries")
+                return
+
+            await self.notify_new_contact(contact, i + 1)
 
     @staticmethod
     def _escape(text: str) -> str:

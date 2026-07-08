@@ -3,6 +3,7 @@ annotated-types==0.7.0
 anyio==4.14.1
 certifi==2026.6.17
 click==8.4.2
+Deprecated==1.3.1
 detect-installer==0.1.0
 dnspython==2.8.0
 email-validator==2.3.0
@@ -19,10 +20,12 @@ httpx==0.28.1
 idna==3.18
 itsdangerous==2.2.0
 Jinja2==3.1.6
+limits==5.8.0
 markdown-it-py==4.2.0
 MarkupSafe==3.0.3
 mccabe==0.7.0
 mdurl==0.1.2
+packaging==26.2
 pycodestyle==2.14.0
 pydantic==2.13.4
 pydantic-extra-types==2.11.1
@@ -38,6 +41,7 @@ rich-toolkit==0.20.1
 rignore==0.7.6
 sentry-sdk==2.64.0
 shellingham==1.5.4
+slowapi==0.1.10
 SQLAlchemy==2.0.51
 starlette==1.3.1
 typer==0.26.8
@@ -48,3 +52,4 @@ uvicorn==0.50.2
 uvloop==0.22.1
 watchfiles==1.2.0
 websockets==16.0
+wrapt==2.2.2

@@ -5,9 +5,13 @@ from app.database import Base
 from app.database import engine
 from app.routes import router
 
+from app.config import setup_limiter
+
 Base.metadata.create_all(bind=engine)
 
+
 app = FastAPI()
+setup_limiter(app)
 
 app.add_middleware(
     CORSMiddleware,

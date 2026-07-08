@@ -6,11 +6,13 @@ from app.schema import Contact
 from app.models import ContactCreate
 from app.dependencies.services import get_notifier
 from app.services import NotificationService
+from app.config import limiter
 
 router = APIRouter()
 
 
 @router.post("/contact", status_code=201)
+@limiter.limit("1/minute")
 async def create_contact(
     data: ContactCreate,
     request: Request,
