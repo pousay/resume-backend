@@ -2,8 +2,8 @@ from app.config import settings
 from app.services import NotificationService, TelegramService
 
 telegram: TelegramService = TelegramService(
-    bot_token=settings.BOT_TOKEN,
-    chat_id=settings.CHAT_ID,
+    bot_token=settings.TELEGRAM_BOT_TOKEN,
+    chat_id=settings.TELEGRAM_CHAT_ID,
 )
 
 notifier: NotificationService = NotificationService(telegram)

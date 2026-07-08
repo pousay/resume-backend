@@ -4,8 +4,8 @@ from sqlalchemy.orm import Session
 from app.dependencies import get_db
 from app.schema import Contact
 from app.models import ContactCreate
-from backend.app.dependencies.services import get_notifier
-from backend.app.services import NotificationService
+from app.dependencies.services import get_notifier
+from app.services import NotificationService
 
 router = APIRouter()
 
