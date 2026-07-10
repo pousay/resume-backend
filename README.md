@@ -111,6 +111,32 @@ uvicorn app.main:app --reload
 
 The API will be available at `http://localhost:8000`, with interactive docs at `http://localhost:8000/docs`.
 
+### Run with Docker
+
+Requires [Docker](https://docs.docker.com/get-docker/) and Docker Compose.
+
+1. Copy `.env.example` to `.env` and set your Telegram credentials (see above).
+2. Start the service:
+
+```bash
+docker compose up -d
+```
+
+The API is available at `http://localhost:8000` (docs at `/docs`). SQLite data is stored in a named Docker volume (`resume-data`) so it survives container restarts.
+
+Useful commands:
+
+```bash
+docker compose logs -f          # follow logs
+docker compose down             # stop (keeps data volume)
+docker compose down -v          # stop and delete data volume
+docker compose up -d --build    # rebuild after code changes
+```
+
+When running in Docker, `docker-compose.yml` overrides `DATABASE_URL` to `sqlite:////app/data/contacts.db` inside the container. Local `.env` values for Telegram are still loaded via `env_file`.
+
+If port 8000 is already in use, change the host mapping in `docker-compose.yml` (e.g. `"8080:8000"`).
+
 ### Linting
 
 ```bash
