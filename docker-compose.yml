@@ -1,0 +1,14 @@
+services:
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    environment:
+      DATABASE_URL: sqlite:////app/data/contacts.db
+    volumes:
+      - resume-data:/app/data
+
+volumes:
+  resume-data:
